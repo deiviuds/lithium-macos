@@ -87,29 +87,12 @@ if $retrieve_arch_specific; then
     fi
 
     ## Rust Resource
-    _rust_name="x86_64-apple-darwin"
-    if [[ $(uname -m) == "arm64" ]]; then
-        _rust_name="aarch64-apple-darwin"
-    fi
-
-    _rust_dir="$_src_dir/third_party/rust-toolchain"
-    _rust_bin_dir="$_rust_dir/bin"
-    _rust_flag_file="$_rust_dir/INSTALLED_VERSION"
-
-    _rust_lib_dir="$_rust_dir/rust-std-$_rust_name/lib/rustlib/$_rust_name/lib"
-    _rustc_dir="$_rust_dir/rustc"
-    _rustc_lib_dir="$_rust_dir/rustc/lib/rustlib/$_rust_name/lib"
-
-    echo "rustc 1.93.0-nightly (01867557c 2025-11-12)" > "$_rust_flag_file"
-
-    mkdir -p "$_rust_bin_dir"
-    mkdir -p "$_rust_dir/lib"
-    ln -s "$_rust_dir/rustc/bin/rustc" "$_rust_bin_dir/rustc"
-    ln -s "$_rust_dir/cargo/bin/cargo" "$_rust_bin_dir/cargo"
-    ln -s "$_rust_dir/rustfmt-preview/bin/rustfmt" "$_rust_bin_dir/rustfmt"
-    ln -s "$_rust_dir/rustfmt-preview/bin/cargo-fmt" "$_rust_bin_dir/cargo-fmt"
-    ln -s "$_rust_dir/rustc/lib" "$_rust_dir/rustfmt-preview/lib"
-    ln -s "$_rust_lib_dir" "$_rustc_lib_dir"
+    # Lithium: Chromium's prebuilt Rust toolchain is self-contained and doesn't need manual setup
+    # The package from commondatastorage.googleapis.com includes:
+    # - bin/rustc, cargo, rustfmt, bindgen (already in correct locations)
+    # - lib/rustlib/src/rust/library/vendor/ (with all dependencies for stdlib builds)
+    # - VERSION file (in Chromium's expected format)
+    # No symlinks or version file creation needed.
 
     _llvm_dir="$_src_dir/third_party/llvm-build/Release+Asserts"
     _llvm_bin_dir="$_llvm_dir/bin"
