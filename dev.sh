@@ -5,6 +5,10 @@ _root_dir=$(dirname $(greadlink -f $0))
 source "$_root_dir/env.sh"
 source "$_root_dir/devutils/set_quilt_vars.sh"
 
+# Fix QUILT_PATCHES path for lithium-macos
+export QUILT_PATCHES="$_root_dir/patches"
+export QUILT_SERIES="series.merged"
+
 ___helium_setup_gn() {
     local OUT_FILE="$_src_dir/out/Default/args.gn"
     cat "$_main_repo/flags.gn" "$_root_dir/flags.macos.gn" > "$OUT_FILE"
