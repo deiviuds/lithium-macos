@@ -1,0 +1,26 @@
+name: Sanity check
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  sanity:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - uses: ./.github/actions/prepare-environment
+    - name: Run sanity check
+      run: ./sanity-check.sh
+  substitution:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - uses: ./.github/actions/prepare-environment
+    - name: Run substitution check
+      run: ./sanity-check.sh sub
