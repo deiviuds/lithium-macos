@@ -1,8 +1,8 @@
-Fix macOS 15.5+ SDK compatibility - kCGImageByteOrder32Host removed
+Fix macOS 15.5+ SDK compatibility - removed CoreGraphics constants
 
-kCGImageByteOrder32Host was never an official Apple SDK constant.
-It was removed in macOS 15.5+ SDK (Xcode 16.4).
-Use kCGImageByteOrder32Little which is correct for arm64 (little-endian).
+Several CoreGraphics constants were removed in macOS 15.5+ SDK (Xcode 16.4):
+- kCGImageByteOrder32Host: Use kCGImageByteOrder32Little (arm64 is little-endian)
+- kCGBitmapByteOrderInfoMask: Use kCGBitmapByteOrderMask
 
 --- a/skia/ext/skia_utils_mac.mm
 +++ b/skia/ext/skia_utils_mac.mm
@@ -27,3 +27,15 @@ Use kCGImageByteOrder32Little which is correct for arm64 (little-endian).
 +      kCGImageByteOrder32Little |
            static_cast<CGBitmapInfo>(kCGImageAlphaPremultipliedFirst)));
    DCHECK(cg_context_);
+
+--- a/chrome/browser/media/webrtc/window_icon_util_mac.mm
++++ b/chrome/browser/media/webrtc/window_icon_util_mac.mm
+@@ -53,7 +53,7 @@ gfx::ImageSkia GetWindowIcon(content::DesktopMediaID id) {
+
+   // Ensure BGR like.
+   CGBitmapInfo byte_order =
+-      CGImageGetBitmapInfo(cg_icon_image) & kCGBitmapByteOrderInfoMask;
++      CGImageGetBitmapInfo(cg_icon_image) & kCGBitmapByteOrderMask;
+   if (byte_order != kCGImageByteOrderDefault &&
+       byte_order != kCGImageByteOrder32Big) {
+     return gfx::ImageSkia();
