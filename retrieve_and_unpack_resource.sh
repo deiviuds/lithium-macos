@@ -86,7 +86,12 @@ if $retrieve_arch_specific; then
         fi
     fi
 
-    ## Rust Resource
+    ## Rust Resource Cleanup
+    # Remove any stray VERSION file from third_party/ that may interfere with C++20 <version> header
+    # On macOS's case-insensitive filesystem, third_party/VERSION is found as third_party/version
+    # which breaks compilation when C++ includes <version>
+    rm -f "$_src_dir/third_party/VERSION" "$_src_dir/third_party/version" 2>/dev/null || true
+
     # Lithium: Chromium's prebuilt Rust toolchain is self-contained and doesn't need manual setup
     # The package from commondatastorage.googleapis.com includes:
     # - bin/rustc, cargo, rustfmt, bindgen (already in correct locations)
