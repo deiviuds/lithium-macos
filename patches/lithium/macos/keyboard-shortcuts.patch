@@ -8,11 +8,11 @@
        {true,  false, false, false, kVK_ANSI_Y,            IDC_SHOW_HISTORY},
        {true,  true,  false, false, kVK_ANSI_H,            IDC_SHOW_HISTORY},
        {true,  false, false, false, kVK_ANSI_J,            IDC_SHOW_DOWNLOADS},
--      {true,  false, false, false, kVK_ANSI_D,            IDC_BOOKMARK_PAGE},
+-      {true,  false, false, false, kVK_ANSI_D,            IDC_BOOKMARK_THIS_TAB},
 +      // Lithium: Cmd+D focuses address bar (like other browsers)
 +      {true,  false, false, false, kVK_ANSI_D,            IDC_FOCUS_LOCATION},
 +      // Lithium: Cmd+Shift+D adds bookmark
-+      {true,  true,  false, false, kVK_ANSI_D,            IDC_BOOKMARK_PAGE},
++      {true,  true,  false, false, kVK_ANSI_D,            IDC_BOOKMARK_THIS_TAB},
        {true,  false, false, false, kVK_ANSI_F,            IDC_FIND},
        {true,  false, false, false, kVK_ANSI_G,            IDC_FIND_NEXT},
        {true,  true,  false, false, kVK_ANSI_G,            IDC_FIND_PREVIOUS},

@@ -1,0 +1,29 @@
+Replace REBEL_BROWSER buildflag with ENABLE_SPARKLE
+
+The sparkle-integration.patch from Rebel project uses BUILDFLAG(REBEL_BROWSER)
+which is not defined in Lithium/Helium. Since this flag is only used to guard
+Sparkle-related code, we replace it with BUILDFLAG(ENABLE_SPARKLE) which we
+already define.
+
+--- a/chrome/browser/upgrade_detector/get_installed_version_mac.mm
++++ b/chrome/browser/upgrade_detector/get_installed_version_mac.mm
+@@ -13,8 +13,8 @@
+ #include "base/version.h"
+ #include "chrome/browser/updater/browser_updater_client_util.h"
+ 
+-#include "build/branding_buildflags.h"  // Needed for REBEL_BROWSER.
+-#if BUILDFLAG(REBEL_BROWSER)
++#include "chrome/browser/buildflags.h"  // Needed for ENABLE_SPARKLE.
++#if BUILDFLAG(ENABLE_SPARKLE)
+ #include "base/strings/utf_string_conversions.h"
+ #include "rebel/chrome/browser/mac/sparkle_glue.h"
+ #endif
+@@ -24,7 +24,7 @@ void GetInstalledVersion(InstalledVersionCallback callback) {
+       FROM_HERE,
+       {base::MayBlock(), base::TaskPriority::BEST_EFFORT,
+        base::TaskShutdownBehavior::CONTINUE_ON_SHUTDOWN},
+-#if BUILDFLAG(REBEL_BROWSER)
++#if BUILDFLAG(ENABLE_SPARKLE)
+       base::BindOnce([] {
+         return InstalledAndCriticalVersion(base::Version(
+             base::UTF16ToASCII(rebel::CurrentlyDownloadedVersion())));

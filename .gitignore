@@ -8,3 +8,4 @@ build/
 
 resources/generated/
 resources/lithium/COPY_FILES_HERE.md
+monitor-build.sh

@@ -21,13 +21,17 @@ helium/macos/fix-pwa-shims.patch
 helium/macos/clean-main-menu.patch
 helium/macos/disable-immersive-fullscreen.patch
 
+# Sparkle auto-update framework (disabled - see SPARKLE.md)
+lithium/macos/add-enable-sparkle-buildflag.patch
 rebel/macos/sparkle-integration.patch
 helium/macos/updater/fixup-sparkle-glue.patch
 helium/macos/updater/sparkle2-integration.patch
 helium/macos/updater/disable-default-updater.patch
+lithium/macos/fix-rebel-browser-buildflag.patch
 
 # Lithium Browser patches
 lithium/macos/fix-skia-macos15-sdk.patch
+lithium/macos/fix-unit-tests-safebrowsing.patch
 lithium/macos/keyboard-shortcuts.patch
 lithium/macos/lithium-keychain.patch
 lithium/macos/lithium-product-dir.patch

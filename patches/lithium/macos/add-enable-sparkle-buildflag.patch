@@ -1,0 +1,30 @@
+Add ENABLE_SPARKLE buildflag definition (disabled by default)
+
+The sparkle-integration.patch uses BUILDFLAG(ENABLE_SPARKLE) but never defines
+the buildflag. This patch adds the missing definition with enable_sparkle=false.
+
+Sparkle is a macOS auto-update framework. It's disabled by default because
+Lithium doesn't currently use automatic updates. See SPARKLE.md for details
+on how to enable it in the future.
+
+--- a/chrome/browser/buildflags.gni
++++ b/chrome/browser/buildflags.gni
+@@ -14,4 +14,7 @@ declare_args() {
+ 
+   # Detect updates and notify the user for Google Chrome across all platforms.
+   # Chromium does not use an auto-updater.
+   enable_update_notifications = is_chrome_branded
++
++  # Enable Sparkle auto-update framework on macOS (disabled - see SPARKLE.md)
++  enable_sparkle = false
+ }
+--- a/chrome/browser/BUILD.gn
++++ b/chrome/browser/BUILD.gn
+@@ -96,6 +96,7 @@ buildflag_header("buildflags") {
+     "ENABLE_UPDATE_NOTIFICATIONS=$enable_update_notifications",
+     "USE_MINIKIN_HYPHENATION=$use_minikin_hyphenation",
+     "USE_THIN_LTO=$use_thin_lto",
++    "ENABLE_SPARKLE=$enable_sparkle",
+   ]
+ 
+   if (is_win) {
