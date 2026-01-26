@@ -7,3 +7,4 @@ build/
 .pc
 
 resources/generated/
+resources/lithium/COPY_FILES_HERE.md
