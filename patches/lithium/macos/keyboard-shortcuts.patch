@@ -1,0 +1,18 @@
+# Lithium Browser: Cmd+D focuses address bar, Cmd+Shift+D adds bookmark
+# This modifies the Cmd+D shortcut to focus the location bar instead of
+# adding a bookmark, which is more consistent with other browsers.
+
+--- a/chrome/browser/global_keyboard_shortcuts_mac.mm
++++ b/chrome/browser/global_keyboard_shortcuts_mac.mm
+@@ -137,7 +137,10 @@ const std::vector<KeyboardShortcutData>&
+       {true,  false, false, false, kVK_ANSI_Y,            IDC_SHOW_HISTORY},
+       {true,  true,  false, false, kVK_ANSI_H,            IDC_SHOW_HISTORY},
+       {true,  false, false, false, kVK_ANSI_J,            IDC_SHOW_DOWNLOADS},
+-      {true,  false, false, false, kVK_ANSI_D,            IDC_BOOKMARK_PAGE},
++      // Lithium: Cmd+D focuses address bar (like other browsers)
++      {true,  false, false, false, kVK_ANSI_D,            IDC_FOCUS_LOCATION},
++      // Lithium: Cmd+Shift+D adds bookmark
++      {true,  true,  false, false, kVK_ANSI_D,            IDC_BOOKMARK_PAGE},
+       {true,  false, false, false, kVK_ANSI_F,            IDC_FIND},
+       {true,  false, false, false, kVK_ANSI_G,            IDC_FIND_NEXT},
+       {true,  true,  false, false, kVK_ANSI_G,            IDC_FIND_PREVIOUS},

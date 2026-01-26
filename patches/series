@@ -25,3 +25,8 @@ rebel/macos/sparkle-integration.patch
 helium/macos/updater/fixup-sparkle-glue.patch
 helium/macos/updater/sparkle2-integration.patch
 helium/macos/updater/disable-default-updater.patch
+
+# Lithium Browser patches
+lithium/macos/keyboard-shortcuts.patch
+lithium/macos/lithium-keychain.patch
+lithium/macos/lithium-product-dir.patch

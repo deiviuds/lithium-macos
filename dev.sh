@@ -145,8 +145,8 @@ ___helium_build() {
 }
 
 ___helium_run() {
-    cd "$_src_dir" && ./out/Default/Helium.app/Contents/MacOS/Helium \
-    --user-data-dir="$HOME/Library/Application Support/net.imput.helium.dev" \
+    cd "$_src_dir" && ./out/Default/Lithium.app/Contents/MacOS/Lithium \
+    --user-data-dir="$HOME/Library/Application Support/com.lithium.browser.dev" \
     --enable-ui-devtools \
     --use-mock-keychain \
     --disable-features=DialMediaRouteProvider

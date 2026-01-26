@@ -12,3 +12,6 @@ is_official_build=true
 proprietary_codecs=true
 symbol_level=1
 use_sysroot=false
+
+# Lithium: Enable on-device AI model service for Gemini Nano
+use_on_device_model_service=true
