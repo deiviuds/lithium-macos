@@ -1,0 +1,23 @@
+# Lithium Browser: Export ENABLE_SPARKLE buildflag to generated header
+#
+# This patch ensures the enable_sparkle variable (defined in buildflags.gni)
+# is exported to the generated chrome/browser/buildflags.h header.
+#
+# Without this, code using BUILDFLAG(ENABLE_SPARKLE) will fail to compile
+# with "function-like macro 'BUILDFLAG_INTERNAL_ENABLE_SPARKLE' is not defined"
+#
+# This is a companion patch to add-enable-sparkle-buildflag.patch which
+# defines enable_sparkle=false in buildflags.gni.
+
+Index: src/chrome/browser/BUILD.gn
+===================================================================
+--- src.orig/chrome/browser/BUILD.gn
++++ src/chrome/browser/BUILD.gn
+@@ -97,6 +97,7 @@ buildflag_header("buildflags") {
+     "ENABLE_UPDATE_NOTIFICATIONS=$enable_update_notifications",
+     "USE_MINIKIN_HYPHENATION=$use_minikin_hyphenation",
+     "USE_THIN_LTO=$use_thin_lto",
++    "ENABLE_SPARKLE=$enable_sparkle",
+   ]
+ 
+   if (is_win) {
