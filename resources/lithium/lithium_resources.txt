@@ -1,0 +1,24 @@
+# Lithium Browser Resource Mapping
+# Format: source_path destination_path
+# Paths are relative to build/src/
+
+# App Icons (macOS)
+app_icon/Assets.car chrome/app/theme/chromium/mac/Assets.car
+app_icon/app.icns chrome/app/theme/chromium/mac/app.icns
+
+# Branding Logos
+branding/product_logo.png components/resources/default_100_percent/chromium/product_logo.png
+branding/product_logo_white.png components/resources/default_100_percent/chromium/product_logo_white.png
+branding/product_logo_200.png components/resources/default_200_percent/chromium/product_logo.png
+branding/product_logo_white_200.png components/resources/default_200_percent/chromium/product_logo_white.png
+branding/product_logo_22_mono.png chrome/app/theme/chromium/product_logo_22_mono.png
+branding/product_logo.svg chrome/app/theme/chromium/product_logo.svg
+
+# Vector Icons
+branding/product_logo.icon chrome/app/vector_icons/browser_logo.icon
+branding/product_logo.icon components/omnibox/browser/vector_icons/product_chrome_refresh.icon
+branding/product_logo.icon components/vector_icons/chromium/product.icon
+
+# Favicons
+favicons/favicon_ntp_16.png chrome/app/theme/default_100_percent/common/favicon_ntp.png
+favicons/favicon_ntp_32.png chrome/app/theme/default_200_percent/common/favicon_ntp.png
